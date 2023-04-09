@@ -26,19 +26,33 @@ The orders collection stores information about the orders placed by customers, i
 
 The Pharmacy Management System allows you to perform various operations on the drugs, customers, and orders collections. Here are some sample queries to get you started:
 
-1)Retrieve all drugs: db.drugs.find()
+1)Retrieve all drugs: 
 
-2)Retrieve all customers: db.customers.find()
+db.drugs.find()
 
-3)Retrieve all orders: db.orders.find()
+2)Retrieve all customers: 
 
-4)Retrieve all orders for a specific customer: db.orders.find({ customer_id: <customer_id> })
+db.customers.find()
 
-5)Retrieve all orders containing a specific drug: db.orders.find({ "items.drug_id": <drug_id> })
+3)Retrieve all orders: 
 
-6)Update the quantity of a drug: db.drugs.updateOne({ _id: <drug_id> }, { $set: { quantity: <new_quantity> } })
+db.orders.find()
 
-7)Insert a new customer: db.customers.insertOne({ name: <customer_name>, email: <customer_email>, phone: <customer_phone>, address: <customer_address> })
+4)Retrieve all orders for a specific customer: 
+
+db.orders.find({ customer_id: <customer_id> })
+
+5)Retrieve all orders containing a specific drug: 
+
+db.orders.find({ "items.drug_id": <drug_id> })
+
+6)Update the quantity of a drug: 
+
+db.drugs.updateOne({ _id: <drug_id> }, { $set: { quantity: <new_quantity> } })
+
+7)Insert a new customer: 
+
+db.customers.insertOne({ name: <customer_name>, email: <customer_email>, phone: <customer_phone>, address: <customer_address> })
 
 # Contributing
 
