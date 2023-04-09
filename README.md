@@ -49,36 +49,36 @@ The orders collection stores information about the orders placed by customers, i
 
 # Usage
 
-The Pharmacy Management System allows you to perform various operations on the drugs, customers, and orders collections. Here are some sample queries to get you started:
+   The Pharmacy Management System allows you to perform various operations on the drugs, customers, and orders collections. Here are some sample queries to get you started:
 
 1)Retrieve all drugs: 
 
-db.drugs.find()
+         db.drugs.find()
 
 2)Retrieve all customers: 
 
-db.customers.find()
+         db.customers.find()
 
 3)Retrieve all orders: 
 
-db.orders.find()
+         db.orders.find()
 
 4)Retrieve all orders for a specific customer: 
 
-db.orders.find({ customer_id: <customer_id> })
+         db.orders.find({ customer_id: <customer_id> })
 
 5)Retrieve all orders containing a specific drug: 
 
-db.orders.find({ "items.drug_id": <drug_id> })
+         db.orders.find({ "items.drug_id": <drug_id> })
 
 6)Update the quantity of a drug: 
 
-db.drugs.updateOne({ _id: <drug_id> }, { $set: { quantity: <new_quantity> } })
+         db.drugs.updateOne({ _id: <drug_id> }, { $set: { quantity: <new_quantity> } })
 
 7)Insert a new customer: 
 
-db.customers.insertOne({ name: <customer_name>, email: <customer_email>, phone: <customer_phone>, address: <customer_address> })
+         db.customers.insertOne({ name: <customer_name>, email: <customer_email>, phone: <customer_phone>, address: <customer_address> })
 
 # Contributing
 
-Contributions are welcome! If you find a bug or have an idea for a new feature, please submit an issue or a pull request.
+   Contributions are welcome! If you find a bug or have an idea for a new feature, please submit an issue or a pull request.
