@@ -1,8 +1,32 @@
 # Pharmacy-Management-using-Mongodb
 
-This is a simple Pharmacy Management System created using MongoDB. The system is composed of three main collections: drugs, customers, and orders. 
-The drugs collection stores information about the drugs available in the pharmacy, including the name, description, quantity, and price. The customers collection stores information about the customers, including their name, email, phone number, and address.
-The orders collection stores information about the orders placed by customers, including the date, customer ID, items purchased (drug ID and quantity), and total price.
+This is a simple Pharmacy Management System created using MongoDB. 
+
+The system is composed of three main collections:
+
+           1)drugs, 
+           2)customers, and 
+           3)orders. 
+           
+The drugs collection stores information about the drugs available in the pharmacy, including 
+
+            1)name, 
+            2)description, 
+            3)quantity, and 
+            4)price. 
+            
+The customers collection stores information about the customers, including
+
+            1)name, 
+            2)email, 
+            3)phone number, and 
+            4)address.
+             
+The orders collection stores information about the orders placed by customers, including
+            1)date, 
+            2)customer ID, 
+            3)items purchased (drug ID and quantity), and 
+            4)total price.
 
 # Installation
 
