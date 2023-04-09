@@ -1,0 +1,385 @@
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+test> use pharmacy;
+switched to db pharmacy
+pharmacy> db.createCollection("drugs");
+{ ok: 1 }
+pharmacy> db.createCollection("orders");
+{ ok: 1 }
+pharmacy> db.createCollection("customers");
+{ ok: 1 }
+pharmacy> db.drugs.insertOne({
+...    name: "Aspirin",
+...    description: "Pain reliever",
+...    quantity: 100,
+...    price: 0.99
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432b924821303e7ed6592f0")
+}
+pharmacy> db.drugs.insertOne({
+...    name: "Ibuprofen",
+...    description: "Pain reliever",
+...    quantity: 50,
+...    price: 1.99
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432b980821303e7ed6592f1")
+}
+pharmacy> db.drugs.insertOne({
+...    name: "Lipitor",
+...    description: "Cholesterol-lowering medication",
+...    quantity: 25,
+...    price: 4.99
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432b998821303e7ed6592f2")
+}
+pharmacy> db.drugs.insertOne({
+...    name: "Amoxicillin",
+...    description: "Antibiotic",
+...    quantity: 75,
+...    price: 2.99
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432b9a8821303e7ed6592f3")
+}
+pharmacy> db.drugs.insertOne({
+...    name: "Naproxen",
+...    description: "Pain reliever",
+...    quantity: 30,
+...    price: 2.49
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432b9bf821303e7ed6592f4")
+}
+pharmacy> db.drugs.insertOne({
+...    name: "Metformin",
+...    description: "Diabetes medication",
+...    quantity: 20,
+...    price: 1.99
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432b9d0821303e7ed6592f5")
+}
+pharmacy> db.customers.insertOne({
+...    name: "shasi",
+...    email: "shasi@gmail.com",
+...    phone: "9233567124",
+...    address: "Perundurai"
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432bc23821303e7ed6592f6")
+}
+pharmacy> db.customers.insertOne({
+...    name: "shasikutty",
+...    email: "shasikutty@gmail.com",
+...    phone: "9233444124",
+...    address: "Perundurai"
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432bc34821303e7ed6592f7")
+}
+pharmacy> db.customers.insertOne({
+...    name: "sha",
+...    email: "sha@gmail.com",
+...    phone: "7012365411",
+...    address: "Thindal"
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432bc40821303e7ed6592f8")
+}
+pharmacy> db.customers.insertOne({
+...    name: "anand",
+...    email: "anand@gmail.com",
+...    phone: "7010111666",
+...    address: "Kochin"
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432bc4f821303e7ed6592f9")
+}
+pharmacy> db.customers.insertOne({
+...    name: "shiva",
+...    email: "shiva@gmail.com",
+...    phone: "9233567111",
+...    address: "Andhra"
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432bc59821303e7ed6592fa")
+}
+pharmacy> db.customers.insertOne({
+...    name: "shasianand",
+...    email: "shasianand@gmail.com",
+...    phone: "9112276592",
+...    address: "Erode"
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432bc64821303e7ed6592fb")
+}
+pharmacy> db.customers.insertOne({
+...    name: "shasianand",
+...    email: "shasianand@gmail.com",
+...    phone: "9112276592",
+...    address: "Erode"
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432bce3821303e7ed6592fc")
+}
+pharmacy> db.orders.insertOne({
+...    date: new Date(),
+...    customer_id: db.customers.findOne().customer_id,
+...    items: [
+...       {drug_id: db.drugs.findOne({name: "Aspirin"}).drug_id, quantity: 2},
+...       {drug_id: db.drugs.findOne({name: "Ibuprofen"}).drug_id, quantity: 1}
+...    ],
+...    total: (2 * db.drugs.findOne({name: "Aspirin"}).price) + db.drugs.findOne({name: "Ibuprofen"}).price
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId("6432be38821303e7ed6592fd")
+}
+pharmacy> db.orders.insertMany([
+...   {
+...     order_id: ObjectId(),
+...     date: new Date(),
+...     customer_id: "59fb7f5f-17af-493a-8318-2751a5cb0cfe",
+...     items: [
+...       { item_id: "133a3a8b-ff4b-4c6b-a26f-f59e56b20ce9", quantity: 2 },
+...       { item_id: "1b890ca4-92a9-4db4-af12-4a95a5e09392", quantity: 1 }
+...     ],
+...     total: 3.97
+...   },
+...   {
+...     order_id: ObjectId(),
+...     date: new Date(),
+...     customer_id: "bc3bf4aa-2c6a-4e5c-ab54-f2fe6a9f0462",
+...     items: [
+...       { item_id: "32173807-0fa3-458c-9c83-be9296ca4029", quantity: 3 }
+...     ],
+...     total: 14.97
+...   },
+...   {
+...     order_id: ObjectId(),
+...     date: new Date(),
+...     customer_id: "8c542b29-8d6d-4e33-9108-03bbe9a45fac",
+...     items: [
+...       { item_id: "4845d8be-d905-455e-b66c-e728bef4a430", quantity: 1 },
+...       { item_id: "6c97b143-2924-493b-85f6-5179f6e4f5ab", quantity: 2 }
+...     ],
+...     total: 6.97
+...   }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6432c18d821303e7ed659301"),
+    '1': ObjectId("6432c18d821303e7ed659302"),
+    '2': ObjectId("6432c18d821303e7ed659303")
+  }
+}
+pharmacy> db.drugs.find()
+[
+  {
+    _id: ObjectId("6432b924821303e7ed6592f0"),
+    name: 'Aspirin',
+    description: 'Pain reliever',
+    quantity: 100,
+    price: 0.99
+  },
+  {
+    _id: ObjectId("6432b980821303e7ed6592f1"),
+    name: 'Ibuprofen',
+    description: 'Pain reliever',
+    quantity: 50,
+    price: 1.99
+  },
+  {
+    _id: ObjectId("6432b998821303e7ed6592f2"),
+    name: 'Lipitor',
+    description: 'Cholesterol-lowering medication',
+    quantity: 25,
+    price: 4.99
+  },
+  {
+    _id: ObjectId("6432b9a8821303e7ed6592f3"),
+    name: 'Amoxicillin',
+    description: 'Antibiotic',
+    quantity: 75,
+    price: 2.99
+  },
+  {
+    _id: ObjectId("6432b9bf821303e7ed6592f4"),
+    name: 'Naproxen',
+    description: 'Pain reliever',
+    quantity: 30,
+    price: 2.49
+  },
+  {
+    _id: ObjectId("6432b9d0821303e7ed6592f5"),
+    name: 'Metformin',
+    description: 'Diabetes medication',
+    quantity: 20,
+    price: 1.99
+  }
+]
+pharmacy> db.customers.find()
+[
+  {
+    _id: ObjectId("6432bc23821303e7ed6592f6"),
+    name: 'shasi',
+    email: 'shasi@gmail.com',
+    phone: '9233567124',
+    address: 'Perundurai'
+  },
+  {
+    _id: ObjectId("6432bc34821303e7ed6592f7"),
+    name: 'shasikutty',
+    email: 'shasikutty@gmail.com',
+    phone: '9233444124',
+    address: 'Perundurai'
+  },
+  {
+    _id: ObjectId("6432bc40821303e7ed6592f8"),
+    name: 'sha',
+    email: 'sha@gmail.com',
+    phone: '7012365411',
+    address: 'Thindal'
+  },
+  {
+    _id: ObjectId("6432bc4f821303e7ed6592f9"),
+    name: 'anand',
+    email: 'anand@gmail.com',
+    phone: '7010111666',
+    address: 'Kochin'
+  },
+  {
+    _id: ObjectId("6432bc59821303e7ed6592fa"),
+    name: 'shiva',
+    email: 'shiva@gmail.com',
+    phone: '9233567111',
+    address: 'Andhra'
+  },
+  {
+    _id: ObjectId("6432bc64821303e7ed6592fb"),
+    name: 'shasianand',
+    email: 'shasianand@gmail.com',
+    phone: '9112276592',
+    address: 'Erode'
+  },
+  {
+    _id: ObjectId("6432bce3821303e7ed6592fc"),
+    name: 'shasianand',
+    email: 'shasianand@gmail.com',
+    phone: '9112276592',
+    address: 'Erode'
+  }
+]
+pharmacy> db.orders.find()
+[
+  {
+    _id: ObjectId("6432be38821303e7ed6592fd"),
+    date: ISODate("2023-04-09T13:31:35.996Z"),
+    customer_id: null,
+    items: [ { drug_id: null, quantity: 2 }, { drug_id: null, quantity: 1 } ],
+    total: 3.9699999999999998
+  },
+  {
+    _id: ObjectId("6432c18d821303e7ed659301"),
+    order_id: ObjectId("6432c18d821303e7ed6592fe"),
+    date: ISODate("2023-04-09T13:45:49.395Z"),
+    customer_id: '59fb7f5f-17af-493a-8318-2751a5cb0cfe',
+    items: [
+      { item_id: '133a3a8b-ff4b-4c6b-a26f-f59e56b20ce9', quantity: 2 },
+      { item_id: '1b890ca4-92a9-4db4-af12-4a95a5e09392', quantity: 1 }
+    ],
+    total: 3.97
+  },
+  {
+    _id: ObjectId("6432c18d821303e7ed659302"),
+    order_id: ObjectId("6432c18d821303e7ed6592ff"),
+    date: ISODate("2023-04-09T13:45:49.395Z"),
+    customer_id: 'bc3bf4aa-2c6a-4e5c-ab54-f2fe6a9f0462',
+    items: [
+      { item_id: '32173807-0fa3-458c-9c83-be9296ca4029', quantity: 3 }
+    ],
+    total: 14.97
+  },
+  {
+    _id: ObjectId("6432c18d821303e7ed659303"),
+    order_id: ObjectId("6432c18d821303e7ed659300"),
+    date: ISODate("2023-04-09T13:45:49.395Z"),
+    customer_id: '8c542b29-8d6d-4e33-9108-03bbe9a45fac',
+    items: [
+      { item_id: '4845d8be-d905-455e-b66c-e728bef4a430', quantity: 1 },
+      { item_id: '6c97b143-2924-493b-85f6-5179f6e4f5ab', quantity: 2 }
+    ],
+    total: 6.97
+  }
+]
+pharmacy>exit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
