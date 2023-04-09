@@ -4,7 +4,7 @@ This is a simple Pharmacy Management System created using MongoDB. The system is
 The drugs collection stores information about the drugs available in the pharmacy, including the name, description, quantity, and price. The customers collection stores information about the customers, including their name, email, phone number, and address.
 The orders collection stores information about the orders placed by customers, including the date, customer ID, items purchased (drug ID and quantity), and total price.
 
-#Installation
+# Installation
 
 1)Make sure you have MongoDB installed on your machine.
 
@@ -22,7 +22,7 @@ The orders collection stores information about the orders placed by customers, i
 
 8)Start using the system by running queries against the collections.
 
-#Usage
+# Usage
 
 The Pharmacy Management System allows you to perform various operations on the drugs, customers, and orders collections. Here are some sample queries to get you started:
 
@@ -40,6 +40,6 @@ The Pharmacy Management System allows you to perform various operations on the d
 
 7)Insert a new customer: db.customers.insertOne({ name: <customer_name>, email: <customer_email>, phone: <customer_phone>, address: <customer_address> })
 
-#Contributing
+# Contributing
 
 Contributions are welcome! If you find a bug or have an idea for a new feature, please submit an issue or a pull request.
