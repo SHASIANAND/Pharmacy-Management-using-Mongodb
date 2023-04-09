@@ -23,6 +23,7 @@ The customers collection stores information about the customers, including
             4)address.
              
 The orders collection stores information about the orders placed by customers, including
+
             1)date, 
             2)customer ID, 
             3)items purchased (drug ID and quantity), and 
